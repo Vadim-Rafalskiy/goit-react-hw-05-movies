@@ -21,27 +21,23 @@ export const getTrendingMovies = async () => {
   return data;
 };
 
-export const getMovieDetails = async ({ id }) => {
+export const getMovieDetails = async id => {
   const { data } = await instance.get(`/movie/${id}`, {
     params: { language: 'en-US' },
   });
   return data;
 };
 
-export const getMovieCredits = async ({ id }) => {
+export const getMovieCredits = async id => {
   const { data } = await instance.get(`/movie/${id}/credits`, {
     params: { language: 'en-US' },
   });
   return data;
 };
 
-export const getMovieReviews = async ({ id }) => {
+export const getMovieReviews = async id => {
   const { data } = await instance.get(`/movie/${id}/reviews`, {
     params: { language: 'en-US' },
   });
   return data;
 };
-
-// get-movie-details
-// get-movie-credits
-// get-movie-reviews

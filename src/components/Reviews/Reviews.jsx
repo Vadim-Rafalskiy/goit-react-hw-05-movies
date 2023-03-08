@@ -1,31 +1,32 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import { getMovieReviews } from 'shared/services/movie-api';
 
-//id
 const Reviews = () => {
+  const { id } = useParams();
   const [reviews, setReviews] = useState(null);
-  const [id, setId] = useState(0);
-  useEffect(() => {
-    if (id) {
-      const fetchReviews = async () => {
-        try {
-          //   console.log('search', search);
-          const { results } = await getMovieReviews(id);
-          //   console.log(results);
-          setReviews(results);
-        } catch (error) {
-          console.log(error.message);
-        }
-      };
 
-      fetchReviews();
-    }
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const data = await getMovieReviews(id);
+        setReviews(data.results);
+      } catch ({ response }) {}
+    };
+
+    fetchReviews();
   }, [id]);
 
-  //   const {...} = reviews;
+  const reviewsList = reviews?.map(({ author, content, created_at }, index) => (
+    <li key={index}>
+      <p>{created_at}</p>
+      <h5>{author}</h5>
+      <p>{content}</p>
+    </li>
+  ));
 
-  return;
+  return <ul>{reviewsList}</ul>;
 };
 
 export default Reviews;

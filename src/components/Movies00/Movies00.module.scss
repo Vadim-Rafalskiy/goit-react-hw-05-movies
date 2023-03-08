@@ -1,0 +1,11 @@
+.link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: black;
+  margin-bottom: 5px;
+}
+
+.link:hover {
+  color: rgb(249, 52, 52);
+}

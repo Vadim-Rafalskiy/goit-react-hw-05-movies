@@ -1,21 +1,22 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { getTrendingMovies } from 'shared/services/movie-api';
+// import Movies from 'components/Movies/Movies';
 
-import Gallery from 'components/Gallery/Gallery';
+import styles from './HomePage.module.scss';
 
 const HomePage = () => {
   const [items, setItems] = useState([]);
-  const [error, setError] = useState(null);
+  const location = useLocation();
+
   useEffect(() => {
     const fetchTrendings = async () => {
       try {
         const { results } = await getTrendingMovies();
         setItems([...results]);
-      } catch (error) {
-        setError(error.message);
-      } finally {
+      } catch ({ response }) {
+        console.log(response.data.message);
       }
     };
 
@@ -23,15 +24,16 @@ const HomePage = () => {
   }, []);
 
   const elements = items.map(({ id, title }) => (
-    <Link className="" key={id} to={`/movies/${id}`}>
+    <Link
+      className={styles.link}
+      key={id}
+      to={`/movies/${id}`}
+      state={{ from: location }}
+    >
       <li>{title}</li>
     </Link>
   ));
   return <ul>{elements}</ul>;
-};
-
-HomePage.defaultProps = {
-  items: [],
 };
 
 export default HomePage;
