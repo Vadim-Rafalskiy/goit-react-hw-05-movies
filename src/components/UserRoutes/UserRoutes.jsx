@@ -13,13 +13,16 @@ const UserRoutes = () => {
   return (
     <Suspense fallback={<p>...loading</p>}>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:id" element={<MovieDetails />}>
+        <Route path="/goit-react-hw-05-movies/" element={<HomePage />} />
+        <Route path="/goit-react-hw-05-movies/movies" element={<Movies />} />
+        <Route
+          path="/goit-react-hw-05-movies/movies/:id"
+          element={<MovieDetails />}
+        >
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="/goit-react-hw-05-movies/*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>
   );
