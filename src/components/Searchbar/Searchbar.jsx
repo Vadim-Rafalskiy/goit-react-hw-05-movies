@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -42,7 +42,7 @@ const SearchBar = ({ onSubmit }) => {
   );
 };
 
-export default SearchBar;
+export default memo(SearchBar);
 
 SearchBar.propTypes = {
   onSubmit: PropTypes.func.isRequired,
