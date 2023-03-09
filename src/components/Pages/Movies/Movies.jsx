@@ -2,11 +2,9 @@ import { useEffect, useState } from 'react';
 import { useSearchParams, useLocation, Link } from 'react-router-dom';
 
 import SearchBar from 'components/Searchbar/Searchbar';
-// import Movies from 'components/Movies/Movies';
 
 import { searchKeywords } from 'shared/services/movie-api';
 
-// import styles from './MoviesPage.module.scss';
 import styles from './Movies.module.scss';
 
 const Movies = () => {
@@ -22,7 +20,7 @@ const Movies = () => {
           const { results } = await searchKeywords(search);
           setItems([...results]);
         } catch ({ response }) {
-          //   console.log(response.data.message);
+          console.log(response.data.message);
         }
       };
 
@@ -35,7 +33,6 @@ const Movies = () => {
     setItems([]);
   };
   const location = useLocation();
-  console.log('MovPage - location', location);
 
   const elements = items.map(({ id, name }) => {
     return (
@@ -54,7 +51,6 @@ const Movies = () => {
     <>
       <SearchBar onSubmit={searchQuery} />
       <ul>{elements}</ul>
-      {/* <Movies items={items} /> */}
     </>
   );
 };

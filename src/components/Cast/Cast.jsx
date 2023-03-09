@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 
 import { getMovieCredits } from 'shared/services/movie-api';
 
+import styles from './Cast.module.scss';
+
 const Cast = () => {
   const { id } = useParams();
   const [credits, setCredits] = useState(null);
@@ -20,14 +22,29 @@ const Cast = () => {
     fetchCredits();
   }, [id]);
 
-  const creditsList = credits?.map(({ id, name, popularity }) => (
-    <li key={id}>
-      <h5>{name}</h5>
-      <p>popularity: {popularity}</p>
+  const creditsList = credits?.map(({ profile_path, cast_id, name }) => (
+    <li className={styles.items} key={cast_id}>
+      <img
+        loading="lazy"
+        className={styles.image}
+        src={
+          profile_path
+            ? `https://image.tmdb.org/t/p/original/${profile_path}`
+            : 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/No_photo_available.svg/800px-No_photo_available.svg.png'
+        }
+        alt=""
+      />
+      <p className={styles.name}>{name}</p>
     </li>
   ));
 
-  return <ul>{creditsList}</ul>;
+  const isCredits = creditsList?.length > 0;
+
+  return (
+    <ul className={styles.castList}>
+      {isCredits ? creditsList : 'To information about the actors.'}
+    </ul>
+  );
 };
 
 export default Cast;

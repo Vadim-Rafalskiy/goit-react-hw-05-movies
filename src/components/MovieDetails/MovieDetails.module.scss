@@ -4,3 +4,50 @@
   margin-left: 20px;
   font-size: 20px;
 }
+
+.btnDetailsWrapper {
+  border-top: 2px solid rgb(207, 204, 204);
+  border-bottom: 2px solid rgb(207, 204, 204);
+  padding: 15px;
+  display: flex;
+  gap: 30px;
+}
+
+.btnDetails {
+  text-decoration: none;
+  color: black;
+  font-size: 24px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.btnDetails:global(.active) {
+  border-top: 2px solid red;
+  border-bottom: 2px solid red;
+  color: red;
+}
+
+.detalesWrapper {
+  display: flex;
+  padding: 15px;
+}
+
+.poster {
+  max-width: 300px;
+}
+
+.detalesInfo {
+  padding: 15px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+h4 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+p {
+  margin: 0;
+}

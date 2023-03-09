@@ -1,0 +1,21 @@
+.item {
+  list-style-type: none;
+  border: 2px solid rgb(223, 214, 214);
+  border-radius: 15px;
+  padding: 10px;
+  background-color: rgb(240, 236, 236);
+}
+
+.item:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.author {
+  font-size: 24px;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.list {
+  padding: 0;
+}
