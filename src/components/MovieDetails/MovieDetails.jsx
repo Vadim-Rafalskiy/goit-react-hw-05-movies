@@ -29,7 +29,8 @@ const MovieDetails = () => {
 
   const genresList = details?.genres.map(({ name }) => name).join(', ');
 
-  const { from } = location?.state;
+  const from = location.state?.from;
+  // console.log(from);
 
   const goBack = useCallback(() => navigate(from), [navigate, from]);
 

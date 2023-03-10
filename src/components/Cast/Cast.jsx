@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 
 import { getMovieCredits } from 'shared/services/movie-api';
 
@@ -39,6 +39,10 @@ const Cast = () => {
   ));
 
   const isCredits = creditsList?.length > 0;
+
+  const Loc = useLocation();
+
+  // console.log('Loc', Loc);
 
   return (
     <ul className={styles.castList}>
